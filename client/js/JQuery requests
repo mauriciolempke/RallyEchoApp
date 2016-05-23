@@ -1,0 +1,83 @@
+#### Get current iteration
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://rally1.rallydev.com/slm/webservice/v2.0/iteration?fetch=name%2CobjectID%2CstartDate%2CendDate%2CPlanEstimate&query=(((Project.ObjectID%20%3D%20%2230031352890%22)%20and%20(StartDate%20%3C%3D%20%222016-05-11%22))and%20(EndDate%20%3E%3D%20%222016-05-11%22))",
+  "method": "GET",
+  "headers": {
+    "authorization": "Basic bWF1cmljaW8ubnVuZXNAZGVhbGVyLmNvbTpQMHJyNGQ0MTE=",
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "4b5ea78c-d8ee-ade0-5805-cace62e7d6aa"
+  },
+  "processData": false,
+  "data": "{\n    \"description\": \"Allowance3 \",\n      \"depositValue\": 25,\n      \"frequencyType\": \"weekly\",\n      \"dayFrequency\": 1\n}"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+/// GET US
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://rally1.rallydev.com/slm/webservice/v2.0/hierarchicalrequirement?query=(Iteration.ObjectID%20%3D%20%2252560574310%22)&pagesize=100&start=1&fetch=blocked%2CplanEstimate%2CtaskActualTotal%2CtaskEstimateTotal%2CtaskRemainingTotal%2CscheduleState%2CformattedID",
+  "method": "GET",
+  "headers": {
+    "authorization": "Basic bWF1cmljaW8ubnVuZXNAZGVhbGVyLmNvbTpQMHJyNGQ0MTE=",
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "913834f1-36d5-d9e8-4cce-fcd6e7c48250"
+  },
+  "processData": false,
+  "data": "{\n    \"description\": \"Allowance3 \",\n      \"depositValue\": 25,\n      \"frequencyType\": \"weekly\",\n      \"dayFrequency\": 1\n}"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+
+// Get Defects
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://rally1.rallydev.com/slm/webservice/v2.0/task?query=(Iteration.ObjectID%20%3D%20%2252560574310%22)&pagesize=200&start=1&fetch=ObjectID%2CWorkProduct%2Cstate%2CtimeSpent%2Cblocked%2Ctodo%2Cestimate",
+  "method": "GET",
+  "headers": {
+    "authorization": "Basic bWF1cmljaW8ubnVuZXNAZGVhbGVyLmNvbTpQMHJyNGQ0MTE=",
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "9b1a352b-6f7e-57d0-4881-033b1901c114"
+  },
+  "processData": false,
+  "data": "{\n    \"description\": \"Allowance3 \",\n      \"depositValue\": 25,\n      \"frequencyType\": \"weekly\",\n      \"dayFrequency\": 1\n}"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+
+// get Tasks
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://rally1.rallydev.com/slm/webservice/v2.0/task?query=(Iteration.ObjectID%20%3D%20%2252560574310%22)&pagesize=200&start=1&fetch=ObjectID%2CWorkProduct%2Cstate%2CtimeSpent%2Cblocked%2Ctodo%2Cestimate%2Cowner",
+  "method": "GET",
+  "headers": {
+    "authorization": "Basic bWF1cmljaW8ubnVuZXNAZGVhbGVyLmNvbTpQMHJyNGQ0MTE=",
+    "content-type": "application/json",
+    "cache-control": "no-cache",
+    "postman-token": "a5936200-20bb-0d9f-736f-de34c7fe4e22"
+  },
+  "processData": false,
+  "data": "{\n    \"description\": \"Allowance3 \",\n      \"depositValue\": 25,\n      \"frequencyType\": \"weekly\",\n      \"dayFrequency\": 1\n}"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});

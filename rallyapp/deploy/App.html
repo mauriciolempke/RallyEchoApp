@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rallyApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!--<script type="text/javascript" src="/apps/2.0/sdk.js"></script> -->
+    <script type="text/javascript" src="https://rally1.rallydev.com/apps/2.0rc2/sdk-debug.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="utils.js"></script>
+    <script src="service.js"></script>
+    <script src="aux.js"></script>
+    <script src="rallyAppController.js"></script>
+    <style type="text/css">
+    body {
+        padding-top: 70px;
+    }
+    
+    .portfolio-item {
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    
+    footer {
+        margin: 50px 0;
+    }
+    
+    .morris-hover {
+        position: absolute;
+        z-index: 1000
+    }
+    
+    .morris-hover.morris-default-style {
+        border-radius: 10px;
+        padding: 6px;
+        color: #666;
+        background: rgba(255, 255, 255, 0.8);
+        border: solid 2px rgba(230, 230, 230, 0.8);
+        font-family: sans-serif;
+        font-size: 12px;
+        text-align: center
+    }
+    
+    .morris-hover.morris-default-style .morris-hover-row-label {
+        font-weight: bold;
+        margin: 0.25em 0
+    }
+    
+    .morris-hover.morris-default-style .morris-hover-point {
+        white-space: nowrap;
+        margin: 0.1em 0
+    }
+    </style>
+    <title>Standup Chart</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/1.0.8/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-cloak>
+    <!-- Page Content -->
+    <div class="container" id="releaseSelector" ng-controller="myController as controller">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                 <div class="row">
+                                    <div class="col-xs-6" >
+                                        <i class="fa fa-calendar fa-fw"></i> {{ $scope.page.currentSprint._refObjectName }}
+                                    </div>
+                                    <div class="col-xs-6" style="text-align:right" >
+                                        Start: {{page.currentSprint.sprintStart}} - End: {{page.currentSprint.sprintEnd}}
+                               <!--         <i class="fa fa-clock-o fa-1x"></i> {{page.daysLeft}} days |
+                                        <i class="fa fa-check-circle fa-1x"></i> {{page.usTotals.acceptedPoints}} accepted | 
+                                        <i class="fa fa-tasks fa-1x"></i> {{page.taskTotals.totalCompleteTasks}} comp. tasks |
+                                        <i class="fa fa-bug fa-1x"></i> {{page.defectTotals.totalCompleteDefects}} comp. defects -->
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+                        <div class="panel-body" ng-show="page.iterationMetrics">
+                            <div class="row" id="data-row-big">
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <i class="fa fa-clock-o fa-4x"></i>
+                                                </div>
+                                                <div class="col-xs-9 text-right">
+                                                    <div class="huge">{{page.currentSprint.daysLeft}}</div>
+                                                    <div>days left of {{page.currentSprint.totalSprintDays}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <i class="fa fa-check-circle fa-4x"></i>
+                                                </div>
+                                                <div class="col-xs-9 text-right">
+                                                    <div class="huge">{{page.usTotals.acceptedPoints}}</div>
+                                                    <div>accepted points of {{page.usTotals.totalPoints}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <i class="fa fa-tasks fa-4x"></i>
+                                                </div>
+                                                <div class="col-xs-9 text-right">
+                                                    <div class="huge">{{page.taskTotals.totalCompleteTasks}}</div>
+                                                    <div>complete tasks of {{page.taskTotals.totalTasks}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <i class="fa fa-bug fa-4x"></i>
+                                                </div>
+                                                <div class="col-xs-9 text-right">
+                                                    <div class="huge">{{page.defectTotals.totalCompleteDefects}}</div>
+                                                    <div>complete defects of {{page.defectTotals.totalDefects}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <!-- /.row -->
+            <div class="row" id="burndown-chart" ng-hide="page.hideChart">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Burndown Chart</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="chart-place"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- ./colum -->
+        <!-- List of voice commands -->
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" style="text-align:right"><i class="fa fa-microphone fa-fw"></i> Voice Commands - Say: <i>"Alexa, ask Rally App to..."</i></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row" ng-show="page.basicCommands">
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <i class="fa fa-th fa-4x"></i>
+                                                </div>
+                                                <div class="col-lg-9 text-right">
+                                                    <div>
+                                                        <h4>"... open story board"</h4></div>
+                                                    <div>To open the list of stories of current sprint.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <a href="#" ng-click="page.burndown()" style="color: inherit" id="openBurnDown">
+                                                        <i class="fa fa-bar-chart-o fa-4x"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-9 text-right">
+                                                    <div>
+                                                        <h4>"... open burndown chart"</h4></div>
+                                                    <div>To see current iteration Burndown Chart</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <i class="fa fa-comments fa-4x"></i>
+                                                </div>
+                                                <div class="col-lg-9 text-right">
+                                                    <div>
+                                                        <h4>"... read last day report"</h4></div>
+                                                    <div>To listen Alexa reporting last day changes</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row-->
+                            <div class="row" ng-show="page.chartCommands">
+                                <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <a href="#" ng-click="page.closeBurndown()" style="color: inherit" id="openBurnDown">
+                                                        <i class="fa fa-times-circle fa-4x"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-9 text-right">
+                                                    <div>
+                                                        <h4>"... close chart"</h4></div>
+                                                    <div>To go back to main page.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row-->
+                        </div>
+                        <!-- Pannel -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</body>
+
+</html>

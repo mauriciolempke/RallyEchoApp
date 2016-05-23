@@ -1,0 +1,446 @@
+<html lang="en" class="">
+<head>
+		<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+		<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<!-- Built With ddc-grails-core Version 3.26.8 -->
+	<title>Facebook OAuth :: Advertising :: Dealer.com</title>
+	<link href="https://cc7-static.qa.dealer.ddc/shared-assets/images/themes/ddc/favicons/favicon-advertising.ico" rel="shortcut icon" type="image/x-icon">
+	
+	<link href="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/css/facebookOauth/index.css" rel="stylesheet">
+	
+	
+	
+	<link href="https://cc7-static.qa.dealer.ddc/shared-assets/css/jquery/jquery-ui-1.8.6.custom.css" rel="stylesheet">
+	<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/utils.js"></script>
+	
+	
+	<link rel="stylesheet" href="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/css/ddc.css">
+	
+	<link rel="stylesheet" href="https://virtual-assets.dealer.com/qa/cc7/dmkt-coco/dmkt-coco.css">
+	<link rel="stylesheet" href="/commoncontainer/theme?account=curryhonda&amp;cachebust=dec4badfe35d164d">
+	
+	
+	
+	
+	<link href="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/js/tracksuit/tracksuit.min.css" rel="stylesheet">
+	
+	<meta name="layout" content="ddc-grails">
+<!-- new content -->
+<style type="text/css">
+body {
+	font-family: "Roboto";
+}
+.instruction-box h3 {
+	background-color: #ffffff;
+}
+
+.instruction-box {
+	margin-bottom: 35px;
+}
+
+.image-container {
+	box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19); 
+	border: 1px outset black;
+}
+
+ </style>	
+
+ <!-- END new content --> 
+
+</head>
+<body class="en US en_US" cz-shortcut-listen="true">
+	
+
+	<common-container>
+	<div id="navigation-block">
+		<div class="min_width_inner">
+			<div class="min_width_container">
+				<div id="branding-bar">
+					<common-container-logo class="ng-scope ng-isolate-scope">
+						<div id="logo"></div>
+					</common-container-logo>
+					
+					<div id="branding-menu">
+						<ul id="branding-list">
+							<li class="branding-item notification-channel" data-channel="social">
+								<div class="branding-link">
+									<a class="notification-icon social" href="javascript:void(0);">
+										<span class="notification-count">3</span>
+									</a>
+								</div>
+								<div class="sub-menu notification-menu">
+									<div class="notification-loader">
+										<img src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/images/core/spinner_transparent.gif">
+									</div>
+									<div class="notification-content"></div>
+								</div>
+							</li>
+							<li class="branding-item notification-channel" data-channel="advertising">
+								<div class="branding-link">
+									<a class="notification-icon advertising" href="javascript:void(0);">
+										<span class="notification-count" style="display: none">0</span>
+									</a>
+								</div>
+							<div class="sub-menu notification-menu">
+								<div class="notification-loader">
+									<img src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/images/core/spinner_transparent.gif">
+								</div>
+								<div class="notification-content"></div>
+							</div>
+						</li>
+						
+						<li class="branding-divider"></li>
+						<li class="branding-item" id="SWITCH_ACCOUNT">
+							<div class="branding-link">
+								<a title="Switch Account" href="#">
+									Switch Account
+								</a>
+							</div>
+						</li>
+						<li class="branding-item" id="GET_HELP">
+							<div class="branding-link">
+								<a title="Get Help" href="#">
+									Get Help
+								</a>
+								
+							</div>
+						</li>
+						<common-container-log-out class="ng-scope ng-isolate-scope">
+							<li class="branding-item" id="LOGOUT">
+								<div class="branding-link">
+									<a href="#" title="Log Out" class="ng-binding">
+										Log Out
+									</a>
+								</div>
+							</li>
+						</common-container-log-out>
+					</ul>
+				</div>
+				
+				<common-container-user-dealer-name class="ng-scope ng-isolate-scope"><div class="user-name">
+					<span class="user-name-text">
+						<a title="Dealer.com Administrative Account (Curry Honda Atlanta)" class="ng-binding">
+							Dealer.com Administrative Account (Curry Honda Atlanta)
+						</a>
+					</span>
+				</div>
+				</common-container-user-dealer-name>
+				
+			</div>
+			
+			
+			<common-container-navigation-super-component class="ng-scope">
+				<div id="menu-bar">
+					<common-container-application-switcher class="ng-isolate-scope">
+						<div id="application-menu">
+							<div class="expandable">
+								<a href="javascript:void(0);" class="application-switcher" ng-class="{selected: vm.isSelected}">
+									<h2 class="application-name ng-binding" ng-bind-html="vm.$sce.trustAsHtml(vm.labelHtml)">Advertising</h2>
+								</a>
+							</div>
+						</div>
+					</common-container-application-switcher>
+
+					<common-container-application-navigation class="ng-isolate-scope">
+						<div id="main-menu">
+						<ul class="expanded-menu">
+							<!-- ngRepeat: item in vm.items track by item.id --><li ng-repeat="item in vm.items track by item.id" ng-class="{expandable: item.children.length}" class="menu-item ng-scope" data-id="HOME/advertising/as/curryhonda/curryhonda-admin/">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/" title="" ng-class="{current: vm.currentTopLevel === item,
+							selected: item.id === vm.selectedItemId}" ng-bind-html="vm.$sce.trustAsHtml(item.labelHtml)" class="ng-binding"><svg width="13px" height="40px" pointer-events="none" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 40px; padding: 0 6px; width: 13px;"><path d="M9.584,1.016 C9.224,0.656 8.612,0.656 8.216,1.016 L1.016,8.252 C0.656,8.648 0.764,8.936 1.304,8.936 L2.816,8.936 L2.816,14.516 C2.816,14.912 2.852,15.236 3.572,15.236 L7.064,15.236 L7.064,9.656 L10.736,9.656 L10.736,15.236 L14.408,15.236 C14.984,15.236 14.984,14.912 14.984,14.516 L14.984,8.936 L16.496,8.936 C17.036,8.936 17.18,8.648 16.784,8.252 L9.584,1.016 Z" id="⌂" fill="#FFFFFF"></path></svg></a>
+							<!-- ngIf: item.children.length -->
+							</li><!-- end ngRepeat: item in vm.items track by item.id --><li ng-repeat="item in vm.items track by item.id" ng-class="{expandable: item.children.length}" class="menu-item ng-scope expandable" data-id="Overview">
+							<a href="javascript:void(0);" title="Overview" ng-class="{current: vm.currentTopLevel === item,
+							selected: item.id === vm.selectedItemId}" ng-bind-html="vm.$sce.trustAsHtml(item.labelHtml)" class="ng-binding">Overview</a>
+							<!-- ngIf: item.children.length --><ul class="sub-menu ng-scope" ng-if="item.children.length" ng-class="{'mega cols-1': item.hasGrandchildren &amp;&amp; item.children.length === 1,
+							'mega cols-2': item.hasGrandchildren &amp;&amp; item.children.length === 2,
+							'mega cols-3': item.hasGrandchildren &amp;&amp; item.children.length === 3,
+							'mega cols-4': item.hasGrandchildren &amp;&amp; item.children.length === 4,
+							'mega cols-5': item.hasGrandchildren &amp;&amp; item.children.length === 5,
+							'mega cols-6': item.hasGrandchildren &amp;&amp; item.children.length === 6}">
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/uad/index" title="Unified Advertising Dashboard" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Unified Advertising Dashboard</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/manageInvestment/index" title="Manage Investment" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Manage Investment</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							</ul><!-- end ngIf: item.children.length -->
+							</li><!-- end ngRepeat: item in vm.items track by item.id --><li ng-repeat="item in vm.items track by item.id" ng-class="{expandable: item.children.length}" class="menu-item ng-scope" data-id="Comparison Tool/advertising/as/curryhonda/curryhonda-admin/comparisonTool/index">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/comparisonTool/index" title="Comparison Tool" ng-class="{current: vm.currentTopLevel === item,
+							selected: item.id === vm.selectedItemId}" ng-bind-html="vm.$sce.trustAsHtml(item.labelHtml)" class="ng-binding">Comparison Tool</a>
+							<!-- ngIf: item.children.length -->
+							</li><!-- end ngRepeat: item in vm.items track by item.id --><li ng-repeat="item in vm.items track by item.id" ng-class="{expandable: item.children.length}" class="menu-item ng-scope expandable" data-id="Search">
+							<a href="javascript:void(0);" title="Search" ng-class="{current: vm.currentTopLevel === item,
+							selected: item.id === vm.selectedItemId}" ng-bind-html="vm.$sce.trustAsHtml(item.labelHtml)" class="ng-binding">Search</a>
+							<!-- ngIf: item.children.length --><ul class="sub-menu ng-scope" ng-if="item.children.length" ng-class="{'mega cols-1': item.hasGrandchildren &amp;&amp; item.children.length === 1,
+							'mega cols-2': item.hasGrandchildren &amp;&amp; item.children.length === 2,
+							'mega cols-3': item.hasGrandchildren &amp;&amp; item.children.length === 3,
+							'mega cols-4': item.hasGrandchildren &amp;&amp; item.children.length === 4,
+							'mega cols-5': item.hasGrandchildren &amp;&amp; item.children.length === 5,
+							'mega cols-6': item.hasGrandchildren &amp;&amp; item.children.length === 6}">
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/overview/index" title="Search Campaigns" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Search Dashboard</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/campaigns/index" title="Search Campaigns" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Search Campaigns</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							</ul><!-- end ngIf: item.children.length -->
+							</li><!-- end ngRepeat: item in vm.items track by item.id --><li ng-repeat="item in vm.items track by item.id" ng-class="{expandable: item.children.length}" class="menu-item ng-scope expandable" data-id="Display">
+							<a href="javascript:void(0);" title="Display" ng-class="{current: vm.currentTopLevel === item,
+							selected: item.id === vm.selectedItemId}" ng-bind-html="vm.$sce.trustAsHtml(item.labelHtml)" class="ng-binding">Display</a>
+							<!-- ngIf: item.children.length --><ul class="sub-menu ng-scope" ng-if="item.children.length" ng-class="{'mega cols-1': item.hasGrandchildren &amp;&amp; item.children.length === 1,
+							'mega cols-2': item.hasGrandchildren &amp;&amp; item.children.length === 2,
+							'mega cols-3': item.hasGrandchildren &amp;&amp; item.children.length === 3,
+							'mega cols-4': item.hasGrandchildren &amp;&amp; item.children.length === 4,
+							'mega cols-5': item.hasGrandchildren &amp;&amp; item.children.length === 5,
+							'mega cols-6': item.hasGrandchildren &amp;&amp; item.children.length === 6}">
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/displayAdsDashboard/index" title="Display Advertising" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Display Dashboard</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/displayAds/viewCampaigns" title="Manage Campaigns" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Manage Campaigns</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/displayAds/search" title="Search for Ads" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Search for Ads</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/newAdBuilder/index" title="Browse Ad Templates" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Browse Ad Templates</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							</ul><!-- end ngIf: item.children.length -->
+							</li><!-- end ngRepeat: item in vm.items track by item.id --><li ng-repeat="item in vm.items track by item.id" ng-class="{expandable: item.children.length}" class="menu-item ng-scope expandable" data-id="Website Integrations">
+							<a href="javascript:void(0);" title="Website Integrations" ng-class="{current: vm.currentTopLevel === item,
+							selected: item.id === vm.selectedItemId}" ng-bind-html="vm.$sce.trustAsHtml(item.labelHtml)" class="ng-binding">Website Integrations</a>
+							<!-- ngIf: item.children.length --><ul class="sub-menu ng-scope" ng-if="item.children.length" ng-class="{'mega cols-1': item.hasGrandchildren &amp;&amp; item.children.length === 1,
+							'mega cols-2': item.hasGrandchildren &amp;&amp; item.children.length === 2,
+							'mega cols-3': item.hasGrandchildren &amp;&amp; item.children.length === 3,
+							'mega cols-4': item.hasGrandchildren &amp;&amp; item.children.length === 4,
+							'mega cols-5': item.hasGrandchildren &amp;&amp; item.children.length === 5,
+							'mega cols-6': item.hasGrandchildren &amp;&amp; item.children.length === 6}">
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/analytics/googleTracking" title="Google Tracking" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Google Tracking</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/configure/advertisingsources" title="Advertisement Sources" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Advertisement Sources</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/offPlatformTrackingId/index" title="Off Platform Tracking ID" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Off Platform Tracking ID</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							</ul><!-- end ngIf: item.children.length -->
+							</li><!-- end ngRepeat: item in vm.items track by item.id --><li ng-repeat="item in vm.items track by item.id" ng-class="{expandable: item.children.length}" class="menu-item ng-scope expandable" data-id="Account Tools">
+							<a href="javascript:void(0);" title="Account Tools" ng-class="{current: vm.currentTopLevel === item,
+							selected: item.id === vm.selectedItemId}" ng-bind-html="vm.$sce.trustAsHtml(item.labelHtml)" class="ng-binding">Account Tools</a>
+							<!-- ngIf: item.children.length --><ul class="sub-menu ng-scope" ng-if="item.children.length" ng-class="{'mega cols-1': item.hasGrandchildren &amp;&amp; item.children.length === 1,
+							'mega cols-2': item.hasGrandchildren &amp;&amp; item.children.length === 2,
+							'mega cols-3': item.hasGrandchildren &amp;&amp; item.children.length === 3,
+							'mega cols-4': item.hasGrandchildren &amp;&amp; item.children.length === 4,
+							'mega cols-5': item.hasGrandchildren &amp;&amp; item.children.length === 5,
+							'mega cols-6': item.hasGrandchildren &amp;&amp; item.children.length === 6}">
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/billing/accountConfigInfo" title="Account Settings" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Account Settings</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/billingHistory/index" title="Billing History" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Billing History</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: !item.hasGrandchildren --><li class="sub-menu-item ng-scope" ng-if="!item.hasGrandchildren" ng-repeat="child in item.children  track by child.id">
+							<a href="/advertising/as/curryhonda/curryhonda-admin/networkReports/index" title="Network Reports" ng-bind-html="vm.$sce.trustAsHtml(child.labelHtml)" class="ng-binding">Network Reports</a>
+							</li><!-- end ngIf: !item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							<!-- ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id --><!-- ngIf: item.hasGrandchildren --><!-- end ngRepeat: child in item.children  track by child.id -->
+							</ul><!-- end ngIf: item.children.length -->
+							</li><!-- end ngRepeat: item in vm.items track by item.id -->
+						</ul>
+					</div>
+					</common-container-application-navigation>
+			</div>
+			</common-container-navigation-super-component>
+			
+			
+		</div>
+	</div>
+	<div id="contact-info-dialog" class="dialog"></div>
+</div>
+</common-container>
+
+<script async="" type="text/javascript" src="https://virtual-assets.dealer.com/qa/cc7/dmkt-coco/dmkt-coco.js"></script>
+
+
+<div id="application-block">
+	
+	<div class="content ng-scope" id="content" data-analytics-feature="Facebook DPA Oauth">
+		<div class="page-loading ng-hide" >
+			<div class="sweet-spinner">
+				<div class="rect1"></div>
+				<div class="rect2"></div>
+				<div class="rect3"></div>
+				<div class="rect4"></div>
+				<div class="rect5"></div>
+			</div>
+		</div>
+
+        <div class="row" id="page-body" data-dealer-name="Curry Honda Atlanta">
+            <div class="col-xs-12 header box">
+                <h1 id="page-title">Facebook Advertising Authorization</h1>
+            </div>
+            <div class="col-xs-12 box animate-show ng-scope" >
+                <h2>Authorize Dealer.com Advertising</h2>
+                <div class="col-xs-12 ng-scope" style="padding-left: 0;">
+                    <div class="col-xs-12 ng-scope"  style="padding-left: 0;">
+                        <p class="text-warning ng-binding" >Facebook authorization is PENDING for Page: 
+                        	<a href="https://www.facebook.com/ROImotors-Volvo-259200770816787/">https://www.facebook.com/ROImotors-Volvo-259200770816787/</a>
+                        </p>
+                        <!-- New content -->
+                        <p>
+    	                    <h4>Thank you! You will receive an alert on your Facebook account in the near future that requests Dealer.com Page Editor access to your page. Please follow the steps below to complete the authorization process.</h4>
+
+                        </p>
+                        <!-- END new content -->
+                    </div>
+                </div>
+                        <!-- New content -->
+				<div class="col-xs-3 " >  </div>
+
+                        <!-- END New content -->
+
+                <div class="col-xs-6 instructions-container"> <!-- New Content: change col 12 to col 6 -->
+                    <div class="col-xs-12"> <!-- New Content: change col 6 to col 12 Repeat to all -->
+                        <div class="row instruction-box">
+                            <div class="col-xs-12"> <!-- New Content: REMOVE instruction-box-inner -->
+                                <h3>
+                                    1. Navigate to your Facebook Page Notification
+                                </h3>
+                                <div class="image-container">
+                                    <img class="img-responsive" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/images/FacebookDPA/FB-1.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row instruction-box">
+                            <div class="col-xs-12">
+                                <h3>
+                                    2. Click on Respond to Request
+                                </h3>
+                                <div class="image-container">
+                                    <img class="img-responsive" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/images/FacebookDPA/FB-2.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row instruction-box">
+                            <div class="col-xs-12">
+                                <h3>
+                                    3. Click on Give Dealer Dot Com access
+                                </h3>
+                                <div class="image-container">
+                                    <img class="img-responsive" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/images/FacebookDPA/FB-3.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row instruction-box">
+                            <div class="col-xs-12">
+                                <h3>
+                                    4. Click on Approve Request
+                                </h3>
+                                <div class="image-container">
+                                    <img class="img-responsive" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/images/FacebookDPA/FB-4.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="row instruction-box">
+                            <div class="col-xs-12">
+                                <h3>
+                                    5. Click Save and Done
+                                </h3>
+                                <div class="image-container">
+                                    <img class="img-responsive" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/images/FacebookDPA/FB-5.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	</div>
+
+	
+	<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/shared-assets/js/jquery/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/shared-assets/js/jquery/jquery-ui-1.8.6.custom.min.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/shared-assets/js/jquery/jquery.ba-hashchange.min.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/shared-assets/js/jquery/jquery.cookie.1.2.min.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/shared-assets/js/jquery/jquery.tmpl.min.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/shared-assets/js/jquery/jquery.hoverintent.min.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/shared-assets/js/jquery/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/polyfills/CustomEvent.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/core.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/core-usage.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/core-menus.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/ga-timings.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/core-notifications.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/core-widgets.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/core-ipad.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/shared-assets/datejs/datejs.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/core-daterange.js"></script>
+<script type="text/javascript" src="https://static.dealer.com/v8/global/js/imaging/swfobject.js"></script>
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/embed-jwplayer.js"></script>
+
+
+	
+	<div id="user-menu" title="Account and User Selections" class="dialog">
+  <div class="loader" id="user-loader">
+    <span>Loading Account Information</span>
+  </div>
+  <div id="user-menu-menu">
+
+  </div>
+</div>
+
+	
+	<div id="help-video-dialog"></div>
+
+	
+
+	
+	
+
+<script type="text/javascript">
+	
+	ddc.core.i18n = {};
+	
+	ddc.core.localize = ddc.core.createLocalizer(ddc.core.i18n);
+	
+	application = window['advertising'] = { i18n: {} };
+	window['advertising'].localize = ddc.core.createLocalizer(application.i18n);
+</script>
+
+<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/core/js/core-i18n.js"></script>
+
+
+	<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/js/advertising-i18n.js"> </script>
+
+
+
+
+	
+	
+
+	
+	<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/js/tracksuit/tracksuit.min.js"></script>
+
+
+	
+	<script type="text/javascript" src="https://cc7-static.qa.dealer.ddc/cc7/advertising/3.5.0/js/facebookOauth/index.js"></script>
+
+    
+
+    <!--[if IE 7]><script type="text/javascript" src="/advertising/as/curryhonda/curryhonda-admin/ccPopupMessage/ie7.js"></script><![endif]-->
+    
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"applicationID":"7028832","applicationTime":178,"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"82e1cf9367","transactionName":"Y1xRZERYXkQHWxcKDFoWcEVFTV9aSV4CAAZWVlxbeVhFQw4X","agent":"","errorBeacon":"bam.nr-data.net"}</script>
+
+
+
+</body></html>

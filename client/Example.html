@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FeatureFollowUp</title>
+
+    <script type="text/javascript" src="/apps/2.0/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function () {
+                var buildFilter = function(inProperty, inOperator, inValue) {
+	return {
+		property: inProperty,
+		operator: inOperator,
+		value: inValue
+	};
+};
+
+var releaseCombobox;
+var categoryList = [];
+var iterationList = [];
+var featureGraph;
+var featureListCombo;
+
+
+
+Ext.define('CustomApp', {
+	extend: 'Rally.app.TimeboxScopedApp',
+	componentCls: 'app',
+	scopeType: 'release',
+
+	onScopeChange: function(scope){
+		this.remove(featureListCombo);
+		this.remove(featureGraph);
+
+		releaseCombobox = null;
+		categoryList = [];
+		iterationList = [];
+		featureGraph = null;
+
+		this.launch();
+	},
+
+	launch: function() {
+		var iterationStore = Ext.create('Rally.data.wsapi.Store', this._getIterationStoreConfig());
+		var loadConfig = {
+			scope: this,
+			success: this.afterLoadIteractions
+		};
+		iterationStore.load().then(loadConfig);
+},
+
+	/* Get the Snapshot Store configuration 
+		Return the list of Iterations in a Release.
+    */
+	_getIterationStoreConfig: function() {
+		var releseObj = this.getContext().getTimeboxScope().getRecord().data;
+
+		var projectID = this.getContext().getProject().ObjectID;
+		var releaseStartDate = releseObj.ReleaseStartDate; //new Date(2016, 00, 13); // Change to get the real date from context
+		var releaseEndDate = releseObj.ReleaseDate; //new Date(2016, 03, 19);
+		var filter = this._buildIterationFilter(projectID, releaseStartDate, releaseEndDate);
+		return {
+			model: 'Iteration',
+			filters: filter,
+			fetch: ['Name', 'StartDate', 'EndDate'],
+			sort: {
+				'StartDate': 1
+			}
+		};
+
+	},
+
+
+	_buildIterationFilter: function(projectID, releaseStartDate, releaseEndDate) {
+		var projectFilter = buildFilter('Project.ObjectID', '=', projectID);
+		var startDateBeginFilter = buildFilter('StartDate', '>=', releaseStartDate);
+		var startDateEndFilter = buildFilter('StartDate', '<=', releaseEndDate);
+		var startDateFilter = Ext.create('Rally.data.QueryFilter', startDateBeginFilter).and(startDateEndFilter);
+
+		var endDateBeginFilter = buildFilter('EndDate', '>=', releaseStartDate);
+		var endDateEndFilter = buildFilter('EndDate', '<=', releaseEndDate);
+		var endDateFilter = Ext.create('Rally.data.QueryFilter', endDateBeginFilter).and(endDateEndFilter);
+
+		var dateFilter = startDateFilter.or(endDateFilter);
+		return dateFilter.and(projectFilter);
+	},
+
+	_getFeatureStoreConfig: function() {
+		var projectID = this.getContext().getProject().ObjectID;
+		var releaseID = this.getContext().getTimeboxScope().getRecord().data.ObjectID;
+		var filter = [
+			buildFilter('Release.ObjectID', '=', releaseID)
+		];
+		return {
+			model: 'PortfolioItem/Feature',
+			filters: filter,
+			fetch: ['Name', 'FormattedID', 'ObjectID']
+		};
+
+	},
+
+
+	/*
+		After loading all iterations, read all Features using Lookback API, to build the data series 
+		for the graph
+	*/
+	afterLoadIteractions: function(records, operation){
+		iterationList = records;
+		categoryList.push("Release Start");
+		// build the graphs categories
+		for(i = 0; i < records.length; i++){
+			categoryList.push(records[i].raw.Name);
+		}
+
+		// Read all features of that release
+		var featureStore = Ext.create('Rally.data.wsapi.Store', this._getFeatureStoreConfig());
+		var loadConfig = {
+			scope: this,
+			success: this.afterLoadFeatures
+		};
+		featureStore.load().then(loadConfig);
+	},
+
+	changeFeature: function(combobox, selectedFeature){
+		if (featureGraph !== null) {
+			Ext.destroy(featureGraph);
+		}
+
+		var featureId = selectedFeature[0].raw.ObjectID;
+		var releseObj = this.getContext().getTimeboxScope().getRecord().data;
+
+		if (featureId === 0) return;
+
+		var releaseStartDate = releseObj.ReleaseStartDate; //new Date(2016, 00, 13); // Change to get the real date from context
+		var releaseEndDate = releseObj.ReleaseDate; //new Date(2016, 03, 19);
+		var projectID = this.getContext().getProject().ObjectID;
+
+		var featureSnapshotStore = Ext.create('Rally.data.lookback.SnapshotStore', 
+				this._getFeatureSnapshotStoreConfig(projectID, featureId, releaseStartDate, releaseEndDate));
+
+		var loadConfig = {
+			scope: this,
+			callback: this._afterFeatureDataLoad
+		};
+
+		featureSnapshotStore.load(loadConfig);
+
+	},
+
+	/*
+		With all features, now I can create the graph for each one. 
+	*/
+	afterLoadFeatures: function(records, operation) {
+		var featureData = [];
+		var dataFirstEntry = {
+			ObjectID: 0,
+			name: 'Select a Feature'
+		};
+		featureData.push(dataFirstEntry);
+
+
+		for (i = 0; i < records.length; i++) {
+			var feature = records[i].raw; 
+			var data = {
+				ObjectID: feature.ObjectID,
+				name: feature.FormattedID + ' - ' + feature.Name 
+			};
+			featureData.push(data);
+		}
+
+		var featureStoreConfig = {
+			fields: ['ObjectID', 'name'],
+			data: featureData
+		};
+
+		// First, build a combobox
+		var featureStore = Ext.create('Ext.data.Store', featureStoreConfig);
+		featureListCombo =  this.add({
+			xtype: 'rallycombobox',
+			id: 'featureComboBox',
+			fieldLabel: 'Choose a Feature',
+			store: featureStore,
+			queryMode: 'local',
+			displayField: 'name',
+			valueField: 'ObjectID',
+			autoSelect: true,
+			width: 800,
+			listeners: {
+				scope: this,
+				select: this.changeFeature
+			}
+		});
+
+	},
+
+	_getFeatureSnapshotStoreConfig: function(projectID, featureId, startDate, endDate) {
+		var filter = [
+			buildFilter('_ProjectHierarchy', '=', projectID),
+			buildFilter('ObjectID', '=', featureId),
+			buildFilter('_TypeHierarchy', '=', 'PortfolioItem/Feature'),
+			buildFilter('_ValidTo', '$gt', startDate)
+		];
+
+		return {
+			filters: filter,
+			fetch: ['AcceptedLeafStoryPlanEstimateTotal', 'LeafStoryPlanEstimateTotal', 'Name', 'FormattedID'],
+			sort: {
+				_ValidFrom: 1
+			},
+			context: this.getContext().getDataContext(),
+			limit: Infinity
+		};
+	},
+
+	_afterFeatureDataLoad: function(records, operation) {
+		var estimatedList = [];
+		var acceptedList = [];
+		var firstFeature = records[0].raw;
+		var featureFormattedID = firstFeature.FormattedID;
+		var featureName = firstFeature.Name;
+		var today = new Date();
+
+		// First set the release beggining data
+
+		estimatedList.push(firstFeature.LeafStoryPlanEstimateTotal - firstFeature.AcceptedLeafStoryPlanEstimateTotal);
+		acceptedList.push(firstFeature.AcceptedLeafStoryPlanEstimateTotal);
+
+
+		for(i = 0; i < iterationList.length; i++) {
+			// For each iteration of the release, take the feature snapshot that is valid at the end of that sprint.
+			var endDate = iterationList[i].raw.EndDate;
+			var endDate2 = iterationList[i].data.EndDate;
+
+			var found = false;
+
+			if (endDate2 <= today) {
+				for(f = 0; f < records.length; f++) {
+					var feature = records[f].raw;
+					if(feature._ValidFrom <= endDate &&  feature._ValidTo >= endDate) {
+						estimatedList.push(feature.LeafStoryPlanEstimateTotal - feature.AcceptedLeafStoryPlanEstimateTotal);
+						acceptedList.push(feature.AcceptedLeafStoryPlanEstimateTotal);
+						found = true;
+						break;
+					}
+				}
+			}
+			if (!found) {
+				estimatedList.push(0);
+				acceptedList.push(0);
+			}
+
+		}
+
+		var seriesData = [
+			{
+				name: 'Estimated',
+				data: estimatedList
+			}, 
+			{
+				name: 'Accepted',
+				data: acceptedList
+			}
+		];
+
+		var chartDataVar = {
+			categories: categoryList,
+			series: seriesData
+		};
+
+		var chartConfiguration = {
+			chart: {
+				type: 'area'
+			},
+			colors: ['#5a66ff', '#019a01' ],
+			title: {
+				text: featureFormattedID + " - " + featureName
+			},
+			xAxis: {
+				tickmarkPlacement: 'on',
+				title: {
+					text: 'Iterations'
+				}
+			},
+			yAxis: {
+				title: {
+					text: 'Story Points'
+				}	
+			},
+			plotOptions: {
+				area: {
+					stacking: 'normal',
+					colors: ['#FF0000', '#00FF00']
+				}
+			}
+		};
+
+		/*featureGraph = Ext.create('Rally.ui.chart.Chart', {
+			renderTo: Ext.getBody(), //('container-1010-innerCt'),
+			width: 500,
+			height: 500,
+			chartData: chartDataVar,
+			chartConfig: chartConfiguration,
+			chartColors: ['#5a66ff', '#019a01']
+		}).setChartColors(['#5a66ff', '#019a01']);*/
+
+		featureGraph = this.add({
+			xtype: 'rallychart',
+			loadMask: false,
+			chartData: chartDataVar,
+			chartConfig: chartConfiguration,
+			chartColors: ['#5a66ff', '#019a01']
+		});
+
+	}
+
+
+});
+
+
+
+
+            Rally.launchApp('CustomApp', {
+                name:"FeatureFollowUp",
+	            parentRepos:""
+            });
+
+        });
+    </script>
+
+
+
+    <style type="text/css">
+        .app {
+  /* Add app styles here */
+}
+
+    </style>
+</head>
+<body>
+</body>
+</html>

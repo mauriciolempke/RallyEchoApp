@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <style type="text/css">
+        body {padding-top: 70px;}
+
+        .portfolio-item {margin-bottom: 25px;text-align: center;}
+
+        footer {margin: 50px 0;}
+
+       .morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
+        .morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0}
+
+
+    </style>
+
+    <title>3 Col Portfolio - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/1.0.8/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="navApp"  style="display:none">
+        <!--<div class="container">-->
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Rally Voice App</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- /.navbar-collapse -->
+       <!-- </div> -->
+        <!-- /.container -->
+    </div>
+
+    <!-- Page Content -->
+    <div class="container" id="releaseSelector" style="display:none">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Release Selector
+                    <small>Say: <i>"Alexa, ask Rally App to..."</i></small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row" >
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="https://pixabay.com/static/uploads/photo/2014/04/03/00/40/arrows-309038_960_720.png" alt="" style="width:240px; height: 240px; margin-left: auto; margin-right: auto;">
+                </a>
+                <h3>
+                    <a href="#" id="previousReleaseLink"><i>"...go to previous <br>Release"</i></a>
+                </h3>
+                <h4>2016Q1</h2>
+                <p>To move selector to Release 2016Q1</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="https://pixabay.com/static/uploads/photo/2013/07/13/11/25/target-158129_960_720.png" alt="" style="width:240px; height: 240px; margin-left: auto; margin-right: auto;">
+                </a>
+                <h3>
+                    <a href="#" id="selectCurrentLink"><i>"...select current <br>Release"</i></a>
+                </h3>
+                <h4>2016Q1</h2>
+                <p>To select Release 2016Q2 and move into Iteration Selector</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="https://pixabay.com/static/uploads/photo/2014/04/03/00/40/arrows-309036_960_720.png" alt="" style="width:240px; height: 240px; margin-left: auto; margin-right: auto;">
+                </a>
+                <h3>
+                    <a href="#" id="nextReleaseLink"><i>"...go to next <br>Release"</i></a>
+                </h3>
+                <h4>2016Q1</h2>
+                <p>To move selector to Release 2016Q3</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Page Content -->
+    <div class="container" id="iterationSelector" style="display:none">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Iteration Selector
+                    <small>Say: <i>"Alexa, ask Rally App to..."</i></small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Projects Row -->
+        <div class="row" >
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="https://pixabay.com/static/uploads/photo/2014/04/03/00/40/arrows-309038_960_720.png" alt="" style="width:240px; height: 240px; margin-left: auto; margin-right: auto;">
+                </a>
+                <h3>
+                    <a href="#" id="previousReleaseLink"><i>"...go to previous<br> Iteration"</i></a>
+                </h3>
+                <h4>Sprint 1</h2>
+                <p>To move selector to Sprint 1</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="https://pixabay.com/static/uploads/photo/2013/07/13/11/25/target-158129_960_720.png" alt="" style="width:240px; height: 240px; margin-left: auto; margin-right: auto;">
+                </a>
+                <h3>
+                    <a href="#" id="selectCurrentLink"><i>"...select current<br> Iteration"</i></a>
+                </h3>
+                <h4>Sprint 2</h2>
+                <p>To select Sprint 2 and move into Board Selector</p>
+            </div>
+            <div class="col-md-4 portfolio-item">
+                <a href="#">
+                    <img class="img-responsive" src="https://pixabay.com/static/uploads/photo/2014/04/03/00/40/arrows-309036_960_720.png" alt="" style="width:240px; height: 240px; margin-left: auto; margin-right: auto;">
+                </a>
+                <h3>
+                    <a href="#" id="nextReleaseLink"><i>"...go to next <br>Iteration"</i></a>
+                </h3>
+                <h4>Sprint 3</h2>
+                <p>To move selector to Sprint 1</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+
+    <!-- jQuery -->
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+     <!--<script type="text/javascript" src="/apps/2.0/sdk.js"></script> -->
+     <script type="text/javascript" src="https://rally1.rallydev.com/apps/2.0rc2/sdk-debug.js"></script>
+
+    <script type="text/javascript">
+        var docReady = function(){
+            $("#selectCurrentLink").click(function() {
+                $("#releaseSelector").hide();
+                $("#iterationSelector").show();
+            });
+            $("#releaseSelector").show();
+            $("#navApp").show();
+
+           // var currentProjectName =  Rally.environment.getContext().getProject().Name;
+        }
+
+        $(document).ready(docReady);
+
+    </script>
+
+    <script type="text/javascript">
+     /*   Rally.onReady(function () {
+                var app = Ext.define("CustomApp",
+                    {
+                        extend:"Rally.app.App",
+                        height:15,
+                        maxHeight: 15,
+                        launch:function(){
+                            $("#releaseSelector").show();
+                            $("#navApp").show();
+                        }
+
+                    }
+                );
+
+                console.log("AA" + app.getContext());
+
+            Rally.launchApp('CustomApp', {
+                name:"Random App Name18293",
+                parentRepos:""
+            });
+
+        });*/
+
+
+    </script>
+
+</body>
+
+</html>
+
